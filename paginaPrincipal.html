@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Página Principal</title>
+  <link rel="stylesheet" href="stylePaginaPrincipal.css">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="container">
+  <div class="half-image">
+    <img src="avion3.jpeg" alt="Imagen del avión">
+    <p class="text-overlay-top">Bienvenido, <span id="userName">Usuario</span> | <a href="#" id="logoutLink">Cerrar sesión</a></p>
+    <div class="text-bottom-wrapper">
+      <p class="text-overlay-bottom-large">Control de vuelos</p>
+      <p class="text-overlay-subtitle">Página para el control de vuelos</p>
+    </div>
+  </div>
+  <div class="options">
+    <div class="container-text">
+        Usted se encuentra en: Pagina de inicio
+    </div>
+    <ul class="icon-list">
+      <li>
+        <a href="verUsuarios.html">
+          <div class="circle">
+            <i class='bx bx-show'></i>
+          </div>
+          <span class="link-title">Ver usuarios</span>
+          <p>Vea los usuarios que están creados en la base de datos</p>
+        </a>
+      </li>
+      <li>
+        <a href="crearUsuario.html">
+          <div class="circle">
+            <i class='bx bx-user-plus'></i>
+          </div>
+          <span class="link-title">Crear usuario</span>
+          <p>Cree usuarios con distintos roles</p>
+        </a>
+      </li>
+      <li>
+        <a href="cambiarContrasenia.html">
+          <div class="circle">
+            <i class='bx bx-lock-alt'></i>
+          </div>
+          <span class="link-title">Cambiar contraseña</span>
+          <p>Cambie su contraseña</p>
+        </a>
+      </li>
+      <li>
+        <a href="verConsecutivos.html">
+          <div class="circle">
+            <i class='bx bx-list-ul'></i>
+          </div>
+          <span class="link-title">Consecutivos</span>
+          <p>Texto descriptivo de los consecutivos</p>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<script src="scriptPaginaPrincipal.js"></script>
+</body>
+</html>

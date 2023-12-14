@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de registro e inicio de sesión</title>
+    <link rel="stylesheet" href="verUsuarios.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container-form register">
+        <div class="form-information">
+            <h2>Lista de roles</h2>
+            <div class="role-list">
+                <span>Administrador</span>
+                <span>Seguridad</span>
+                <span>Mantenimiento</span>
+                <span>Consultas</span>
+            </div>
+            <form class="form">
+                <input type="submit" value="Actualizar roles">
+                <input type="submit" value="Volver">
+            </form>
+        </div>
+        <div class="users-container">
+            <h2>Usuarios de la base de datos</h2>
+            <input type="text" placeholder="Mostrar usuarios...">
+            <!-- Aquí se mostrarían los usuarios -->
+        </div>
+    </div>
+
+    <script src="scriptVerUsuarios.js"></script>
+</body>
+</html>

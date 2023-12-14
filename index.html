@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Formulario de registro e inicio de sesión</title>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+
+    <!-- Script para validar el CAPTCHA del formulario de inicio de sesión -->
+    <script>
+        function validateLoginForm() {
+            var response = grecaptcha.getResponse();
+            if(response.length == 0) {
+                alert("Por favor, verifica que no eres un robot.");
+                return false;
+            } else {
+                return true;
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="container-form register">
+        <div class="information">
+            <div class="info-childs">
+                <h1>Bienvenido</h1>
+                <p>Inicie sesión para acceder</p>
+                <input type="button" value="Iniciar sesión" id="sign-in">
+            </div>
+        </div>
+        <div class="form-information">
+            <div class="form-information-childs">
+                <h2>
+                    Crear una nueva cuenta
+                </h2>
+                <div class="icons">
+                    <div class="g-signin2" data-onsuccess="onSignIn"></div>
+                    <i class='bx bxl-google'></i>
+                    <i class='bx bxl-facebook-circle'></i>
+                    <i class='bx bxl-instagram-alt'></i>
+                </div>
+                <p>O use su email para el registro</p>
+                <!-- Formulario de registro sin reCAPTCHA (igual al original) -->
+                <form class="form" id="register-form">
+                    <label>
+                        <i class='bx bx-user'></i>
+                        <input type="text" placeholder="Nombre completo">
+                    </label>
+                    <label>
+                        <i class='bx bx-envelope'></i>
+                        <input type="email" placeholder="Correo" required>
+                    </label>
+                    <label>
+                        <i class='bx bx-lock-alt'></i>
+                        <input type="password" placeholder="Contraseña">
+                    </label>
+                    <input type="submit" value="Registrarse">
+                </form>
+            </div>
+        </div> 
+    </div>
+
+    <div class="container-form login hide">
+        <div class="information">
+            <div class="info-childs">
+                <h1>Ir a registro</h1>
+                <p>Registrese o inicie sesión para acceder</p>
+                <input type="button" value="Registrarse" id="sign-up">
+            </div>
+        </div>
+        <div class="form-information">
+            <div class="form-information-childs">
+                <h2>
+                    Inicie sesión
+                </h2>
+                <div class="icons">
+                    <i class='bx bxl-google'></i>
+                    <i class='bx bxl-facebook-circle'></i>
+                    <i class='bx bxl-instagram-alt'></i>
+                </div>
+                <p>O iniciar sesión con una cuenta</p>
+                <!-- Formulario de inicio de sesión con reCAPTCHA Enterprise -->
+                <form class="form" id="login-form" action="paginaPrincipal.html" onsubmit="return validateLoginForm()">
+                    <label>
+                        <i class='bx bx-envelope'></i>
+                        <input type="email" placeholder="Correo" id="correo">
+                    </label>
+                    <label>
+                        <i class='bx bx-lock-alt'></i>
+                        <input type="password" placeholder="Contraseña" id="contraseña">
+                    </label>
+                    <!-- reCAPTCHA con clave del sitio de reCAPTCHA Enterprise -->
+                    <div class="g-recaptcha" data-sitekey="6LflWxopAAAAAKAXzRlkvlE_7IsEG_FSUyYo2kYO" data-callback='onSubmit' data-action='submit'></div>
+                    <input type="submit" value="Iniciar sesión" id="login-submit">
+                </form>
+            </div>
+        </div> 
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
