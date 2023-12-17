@@ -1,7 +1,10 @@
+
+document.addEventListener("DOMContentLoaded", function() {
 const btnSignIn = document.getElementById("sign-in"),
       btnSignUp = document.getElementById("sign-up"),
       formRegister = document.querySelector(".register"),
       formLogin = document.querySelector(".login");
+      var loginButton = document.getElementById('login-submit');
 
 btnSignIn.addEventListener("click", e => {
     formRegister.classList.add("hide");
@@ -13,25 +16,37 @@ btnSignUp.addEventListener("click", e => {
     formRegister.classList.remove("hide");
 });
 
-function onSignIn(googleUser) {
-  var profile = googleUser.getBasicProfile();
-  var idToken = googleUser.getAuthResponse().id_token;
+loginButton.addEventListener('click', function(event) {
+    event.preventDefault(); // Evitar el comportamiento predeterminado del botón
 
-  // Aquí puedes enviar la información al backend para autenticar al usuario
-  // y establecer la sesión del usuario en tu aplicación.
-  // Por ejemplo, podrías enviar el token al servidor para verificar la autenticidad del usuario.
+    var correo = document.getElementById('correo').value;
+    var contraseña = document.getElementById('contraseña').value;
 
-  // Envío del token al backend (ejemplo con fetch)
-  fetch('/ruta/al/backend', {
-      method: 'POST',
-      headers: {
-          'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ token: idToken })
-  })
-  .then(response => response.json())
-  .then(data => {
-      // Procesar la respuesta del backend o redirigir al usuario a la página principal, etc.
-  })
-  .catch(error => console.error('Error:', error));
-}
+    // Realizar la lógica de autenticación aquí
+    // Esto puede ser una solicitud fetch al servidor para verificar las credenciales
+    // Por ejemplo:
+    fetch('https://localhost:7151/api/Usuarios', {
+        method: 'POST',
+        headers: {
+            "Content-Type": "application/json",
+            // 'Content-Type': 'application/x-www-form-urlencoded',
+          },
+        body: JSON.stringify({ correo, contraseña })
+    })
+    .then(response => {
+        if (response.ok) {
+            // Si las credenciales son correctas, redirigir a la página principal
+            window.location.href = 'paginaPrincipal.html';
+        } else {
+            // Si las credenciales no son válidas, mostrar un mensaje al usuario
+            alert('Credenciales inválidas');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        // Manejar el error de la solicitud
+    });
+});
+});
+
+

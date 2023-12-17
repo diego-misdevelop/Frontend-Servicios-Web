@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
     cargarUsuarios();
+    cargarRoles();
 });
 
 function goBack() {
@@ -37,6 +38,24 @@ console.error('Error:', error);
 
 }
 
+function cargarRoles(){
+    fetch('https://localhost:7151/api/Rols')
+    .then(Response =>{
+       if(!Response.ok){
+           throw new Error('Problema');
+    
+       }
+       return Response.json();
+    })
+    .then(roles => {
+       mostrarRoles(roles);
+    })
+    .catch(error =>{
+    console.error('Error:', error);
+    });
+    
+    }
+
 function mostrarUsuarios(usuarios) {
     var userList = document.querySelector('.users-container');
 
@@ -44,11 +63,24 @@ function mostrarUsuarios(usuarios) {
         usuarios.forEach(usuario => {
             var userElement = document.createElement('div');
             userElement.innerHTML = `
-                <p>ID: ${usuario.id_usuario}</p>
+                <p>Id rol: ${usuario.id_rol}</p>
                 <p>Nombre: ${usuario.nom_usuario}</p>
-                <p>Primer Apellido: ${usuario.pri_apellido}</p>
-                <p>Segundo Apellido: ${usuario.seg_apellido}</p>
-                <p>Correo: ${usuario.correo_usuario}</p>
+            `;
+            userList.appendChild(userElement);
+        });
+    } else {
+        console.error('El contenedor de usuarios no se encontró en el DOM.');
+    }
+}
+
+function mostrarRoles(roles) {
+    var userList = document.querySelector('.form-information');
+
+    if (userList) {
+        roles.forEach(rol => {
+            var userElement = document.createElement('div');
+            userElement.innerHTML = `
+                <p>Rol: ${rol.nom_rol}</p>
             `;
             userList.appendChild(userElement);
         });
