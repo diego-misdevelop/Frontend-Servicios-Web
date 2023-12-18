@@ -16,37 +16,57 @@ btnSignUp.addEventListener("click", e => {
     formRegister.classList.remove("hide");
 });
 
+function onSignIn(googleUser) {
+    var profile = googleUser.getBasicProfile();
+    var idToken = googleUser.getAuthResponse().id_token;
+
+    // Puedes guardar el token en el LocalStorage
+    localStorage.setItem('googleToken', idToken);
+
+    // Redireccionar a la página principal o realizar otras acciones
+    window.location.href = 'paginaPrincipal.html';
+}
+
+
 loginButton.addEventListener('click', function(event) {
     event.preventDefault(); // Evitar el comportamiento predeterminado del botón
 
     var correo = document.getElementById('correo').value;
     var contraseña = document.getElementById('contraseña').value;
 
-    // Realizar la lógica de autenticación aquí
-    // Esto puede ser una solicitud fetch al servidor para verificar las credenciales
-    // Por ejemplo:
-    fetch('https://localhost:7151/api/Usuarios', {
-        method: 'POST',
-        headers: {
-            "Content-Type": "application/json",
-            // 'Content-Type': 'application/x-www-form-urlencoded',
-          },
-        body: JSON.stringify({ correo, contraseña })
-    })
-    .then(response => {
-        if (response.ok) {
-            // Si las credenciales son correctas, redirigir a la página principal
+
+    // Obtener el token de Google almacenado en el LocalStorage
+     var googleToken = localStorage.getItem('googleToken');
+
+ 
+        // Verificar si existe el token de Google
+        if (googleToken) {
+            // Aquí puedes usar el token para autenticar al usuario o realizar otras acciones necesarias
+
+            // Redireccionar a la página principal
             window.location.href = 'paginaPrincipal.html';
         } else {
-            // Si las credenciales no son válidas, mostrar un mensaje al usuario
-            alert('Credenciales inválidas');
+            // Si no se ha iniciado sesión con Google, realizar la lógica de autenticación normal
+            fetch('https://localhost:7151/api/Usuarios', {
+                method: 'POST',
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ correo, contraseña })
+            })
+            .then(response => {
+                if (response.ok) {
+                    window.location.href = 'paginaPrincipal.html';
+                } else {
+                    alert('Credenciales inválidas');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
         }
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        // Manejar el error de la solicitud
     });
-});
+
 });
 
 

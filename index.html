@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="google-signin-client_id" content="913950629206-pkt5oha22i3i5k61lhdh57cjo1ooeokt.apps.googleusercontent.com">
     <title>Formulario de registro e inicio de sesión</title>
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
@@ -26,6 +27,15 @@
             }
         }
     </script>
+    <script>
+    function onSignIn(googleUser) {
+        var profile = googleUser.getBasicProfile();
+        console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+        console.log('Name: ' + profile.getName());
+        console.log('Image URL: ' + profile.getImageUrl());
+        console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+      }
+    </script>
 </head>
 <body>
     <div class="container-form register">
@@ -42,7 +52,6 @@
                     Crear una nueva cuenta
                 </h2>
                 <div class="icons">
-                    <div class="g-signin2" data-onsuccess="onSignIn"></div>
                     <i class='bx bxl-google'></i>
                     <i class='bx bxl-facebook-circle'></i>
                     <i class='bx bxl-instagram-alt'></i>
@@ -85,8 +94,10 @@
                     <i class='bx bxl-google'></i>
                     <i class='bx bxl-facebook-circle'></i>
                     <i class='bx bxl-instagram-alt'></i>
+                    
                 </div>
                 <p>O iniciar sesión con una cuenta</p>
+                <div class="g-signin2" data-onsuccess="onSignIn"></div>
                 <!-- Formulario de inicio de sesión con reCAPTCHA Enterprise -->
                 <form class="form" id="login-form" action="paginaPrincipal.html" onsubmit="return validateLoginForm()">
                     <label>
