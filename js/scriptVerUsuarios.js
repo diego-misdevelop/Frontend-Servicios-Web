@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 function goBack() {
-     window.location.href = 'paginaPrincipal.html';
+     window.location.href = '../hmtl/paginaPrincipal.html';
 }
 
 function cargarUsuarios(){

@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
     function goBack() {
-        window.location.href = 'paginaPrincipal.html';
+        window.location.href = '../hmtl/paginaPrincipal.html';
    }
     // Manejar clic en "Cambiar contraseña"
     changePasswordBtn.addEventListener('click', function(event) {

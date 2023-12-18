@@ -24,7 +24,7 @@ function onSignIn(googleUser) {
     localStorage.setItem('googleToken', idToken);
 
     // Redireccionar a la página principal o realizar otras acciones
-    window.location.href = 'paginaPrincipal.html';
+    window.location.href = '../hmtl/paginaPrincipal.html';
 }
 
 
@@ -44,7 +44,7 @@ loginButton.addEventListener('click', function(event) {
             // Aquí puedes usar el token para autenticar al usuario o realizar otras acciones necesarias
 
             // Redireccionar a la página principal
-            window.location.href = 'paginaPrincipal.html';
+            window.location.href = '../hmtl/paginaPrincipal.html';
         } else {
             // Si no se ha iniciado sesión con Google, realizar la lógica de autenticación normal
             fetch('https://localhost:7151/api/Usuarios', {
@@ -56,7 +56,7 @@ loginButton.addEventListener('click', function(event) {
             })
             .then(response => {
                 if (response.ok) {
-                    window.location.href = 'paginaPrincipal.html';
+                    window.location.href = '../hmtl/paginaPrincipal.html';
                 } else {
                     alert('Credenciales inválidas');
                 }

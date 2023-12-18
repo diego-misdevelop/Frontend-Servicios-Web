@@ -7,7 +7,7 @@ body {
     justify-content: center;
     align-items: center;
     background-color: black;
-    background-image:  url(imgfondo.jpeg);
+    background-image:  url(../imgfondo.jpeg);
 }
 .container-form {
     display: flex;
