@@ -6,6 +6,18 @@ document.addEventListener("DOMContentLoaded", function() {
         var volverButtonValue = "Volver";
         var submitButton = document.activeElement; // Botón presionado
 
+                // Obtener los valores de los campos del formulario
+        var contrasenia = document.querySelector('#contrasenia').value;
+        var nueva_contra = document.querySelector('#nueva_contra').value;
+        var conf_contrasenia = document.querySelector('#conf_contrasenia').value;
+
+        // Crear un objeto con los datos a enviar
+        var data={
+            "correo_usuario": email,
+            "contra_usuario": contrasenia
+        };
+
+
         if (submitButton && submitButton.value === volverButtonValue) {
             event.preventDefault(); // Evitar el envío del formulario
 
@@ -13,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
     function goBack() {
-        window.location.href = '../hmtl/paginaPrincipal.html';
+        window.location.href = '../html/paginaPrincipal.html';
    }
     // Manejar clic en "Cambiar contraseña"
     changePasswordBtn.addEventListener('click', function(event) {
@@ -42,11 +54,8 @@ function cambiarContrasenaRolSeguridad(userId, newPassword) {
         if (!response.ok) {
             throw new Error('Error al cambiar la contraseña');
         }
-        // Acciones adicionales después de cambiar la contraseña (si es necesario)
-        // Por ejemplo, mostrar un mensaje de éxito o redirigir a otra página
     })
     .catch(error => {
         console.error('Error:', error);
-        // Manejar el error, mostrar un mensaje al usuario indicando que hubo un problema al cambiar la contraseña
     });
 }

@@ -7,9 +7,9 @@
     <link rel="stylesheet" href="../css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <meta name="google-signin-client_id" content="913950629206-pkt5oha22i3i5k61lhdh57cjo1ooeokt.apps.googleusercontent.com">
+    <!--<meta name="google-signin-client_id" content="913950629206-pkt5oha22i3i5k61lhdh57cjo1ooeokt.apps.googleusercontent.com">-->
     <title>Formulario de registro e inicio de sesión</title>
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
@@ -27,15 +27,6 @@
             }
         }
     </script> 
-    <script>
-    function onSignIn(googleUser) {
-        var profile = googleUser.getBasicProfile();
-        console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-        console.log('Name: ' + profile.getName());
-        console.log('Image URL: ' + profile.getImageUrl());
-        console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
-      }
-    </script>
 </head>
 <body>
     <div class="container-form register">
@@ -54,16 +45,28 @@
                 <!-- Formulario de registro sin reCAPTCHA (igual al original) -->
                 <form class="form" id="register-form">
                     <label>
-                        <i class='bx bx-user'></i>
-                        <input type="text" placeholder="Nombre completo" required>
+                        <i class="bx bx-user"></i>
+                        <input type="text" placeholder="Usuario" required id="usuario">
                     </label>
                     <label>
-                        <i class='bx bx-envelope'></i>
-                        <input type="email" placeholder="Correo" required>
+                        <i class="bx bx-lock-alt"></i>
+                        <input type="password" placeholder="Contraseña" required id="contrasenia">
                     </label>
                     <label>
-                        <i class='bx bx-lock-alt'></i>
-                        <input type="password" placeholder="Contraseña" required>
+                        <i class="bx bx-lock-alt"></i>
+                        <input type="password" placeholder="Confirmar contraseña" required id="conf_contrasenia">
+                    </label>
+                    <label>
+                        <i class="bx bx-envelope"></i>
+                        <input type="email" placeholder="Correo" required id="email">
+                    </label>
+                    <label>
+                        <i class="bx bx-question-mark"></i>
+                        <input type="text" placeholder="Pregunta seguridad" required id="preg_seg">
+                    </label>
+                    <label>
+                        <i class="bx bx-question-mark"></i>
+                        <input type="text" placeholder="Respuesta seguridad" required id="conf_preg_seg">
                     </label>
                     <input type="submit" value="Registrarse">
                 </form>
@@ -85,21 +88,21 @@
                     Inicie sesión
                 </h2>
                 <div class="icons">
-                    <i class='bx bxl-google'></i>
-                    <i class='bx bxl-facebook-circle'></i>
-                    <i class='bx bxl-instagram-alt'></i>
+                    <i class="bx bxl-google"></i>
+                    <i class="bx bxl-facebook-circle"></i>
+                    <i class="bx bxl-instagram-alt"></i>
                     
                 </div>
                 <p>O iniciar sesión con una cuenta</p>
                 <div class="g-signin2" data-onsuccess="onSignIn"></div>
                 <!-- Formulario de inicio de sesión con reCAPTCHA Enterprise -->
-                <form class="form" id="login-form" action="../hmtl/paginaPrincipal.html" onsubmit="return validateLoginForm()">
+                <form class="form" id="login-form" action="../html/paginaPrincipal.html" onsubmit="return validateLoginForm()">
                     <label>
-                        <i class='bx bx-envelope'></i>
+                        <i class="bx bx-envelope"></i>
                         <input type="email" placeholder="Correo" id="correo">
                     </label>
                     <label>
-                        <i class='bx bx-lock-alt'></i>
+                        <i class="bx bx-lock-alt"></i>
                         <input type="password" placeholder="Contraseña" id="contraseña">
                     </label>
                     <!-- reCAPTCHA con clave del sitio de reCAPTCHA Enterprise -->
@@ -111,5 +114,6 @@
     </div>
 
     <script src="../js/script.js"></script>
+    <script src="../js/scriptCrearUsuario.js"></script>
 </body>
 </html>

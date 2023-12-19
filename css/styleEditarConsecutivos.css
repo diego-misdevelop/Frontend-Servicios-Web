@@ -1,4 +1,4 @@
-*{
+ *{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
@@ -192,3 +192,15 @@ html{
 }
 }
     
+
+.input-wrapper {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+ 
+.field-title {
+    margin-right: 10px;
+    width: 120px;
+    display: inline-block;
+}
