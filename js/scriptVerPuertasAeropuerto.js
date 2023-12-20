@@ -38,51 +38,45 @@ function cargarPuertasAeropuerto(){
     
     }
 
-
     function mostrarPuertas(puertas) {
-        var usersContainer = document.querySelector('.users-container');
-    
-        if (usersContainer) {
-            puertas.forEach(puertas => {
-                var userCard = document.createElement('div');
-                userCard.classList.add('user-card');
-    
-                var userId = document.createElement('p');
-                userId.textContent = `Código puerta: ${puertas.cod_puerta}`;
-                userCard.appendChild(userId);
-    
-                var userDescription = document.createElement('p');
-                userDescription.textContent = `Número puerta: ${puertas.num_puerta}`;
-                userCard.appendChild(userDescription);
-    
-                var userPrefix = document.createElement('p');
-                userPrefix.textContent = `Detalle puerta: ${puertas.detalle_puerta}`;
-                userCard.appendChild(userPrefix);
 
-                var userPrefix = document.createElement('p');
-                userPrefix.textContent = `Estado puerta: ${puertas.nom_estadoP}`;
-                userCard.appendChild(userPrefix);
-
-                var userPrefix = document.createElement('p');
-                userPrefix.textContent = `ID aerolínea: ${puertas.id_aerolinea}`;
-                userCard.appendChild(userPrefix);
+        const tableBody = document.getElementById('table-body');
     
-                var editButton = document.createElement('button');
+        puertas.forEach(puertas => {
+                const row = document.createElement('tr');
+    
+                const codPuertaCell = document.createElement('td');
+                codPuertaCell.textContent = puertas.cod_puerta;
+    
+                const numPuertaCell = document.createElement('td');
+                numPuertaCell.textContent = puertas.num_puerta;
+
+                const detPuertaCell = document.createElement('td');
+                detPuertaCell.textContent = puertas.detalle_puerta;
+
+                const nomEstCell = document.createElement('td');
+                nomEstCell.textContent = puertas.nom_estadoP;
+
+                const idAeroCell = document.createElement('td');
+                idAeroCell.textContent = puertas.id_aerolinea;
+
+                const editButtonCell = document.createElement('td');
+   
+                const editButton = document.createElement('button');
                 editButton.textContent = 'Editar';
                 editButton.classList.add('edit-button');
-                editButton.addEventListener('click', function() {
-                    editar(rol.id_consecutivo);
-                });
-                userCard.appendChild(editButton);
-    
-                usersContainer.appendChild(userCard);
+
+                editButtonCell.appendChild(editButton);
+                row.appendChild(codPuertaCell);
+                row.appendChild(numPuertaCell);
+                row.appendChild(detPuertaCell);
+                row.appendChild(nomEstCell);
+                row.appendChild(idAeroCell);
+                row.appendChild(editButtonCell);
+                tableBody.appendChild(row);
             });
-        } else {
-            console.error('El contenedor de usuarios no se encontró en el DOM.');
-        }
     }
     
-
 function editar(id) {
     // Aquí puedes redirigir a la página de edición con el ID del rol
     window.location.href = '../html/editarConsecutivo.html?id=${id}';

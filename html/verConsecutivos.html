@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de Roles</title>
+    <title>Lista de Consecutivos</title>
     <link rel="stylesheet" href="../css/styleVerConsecutivos.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,12 +14,26 @@
     <div class="container-form register">
         <div class="users-container">
             <h2>Consecutivos</h2>
+            <table id="data-table">
+                <thead>
+                    <tr>
+                        <th>ID consecutivo</th>
+                        <th>Nombre consecutivo</th>
+                        <th>Prefijo consecutivo</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="table-body">
+                </tbody>
+            </table>
             <form class="form">
                 <input type="submit" value="Volver">
+                <input type="submit" value="Nuevo consecutivo">
             </form>
         </div>
     </div>
 
     <script src="../js/scriptVerConsecutivos.js"></script>
+    
 </body>
 </html>

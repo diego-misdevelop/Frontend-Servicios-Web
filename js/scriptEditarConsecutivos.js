@@ -1,22 +1,25 @@
 document.addEventListener("DOMContentLoaded", function() {
     var form = document.querySelector('.form');
+    
 
     form.addEventListener('submit', function(event) {
         var volverButtonValue = "Volver";
+        var aceptarButtonValue = "Aceptar";
+        
         var submitButton = document.activeElement;
 
         if (submitButton && submitButton.value === volverButtonValue) {
             event.preventDefault();
             goBack();
-        } else {
+        } else if (submitButton && submitButton.value === aceptarButtonValue){
             event.preventDefault();
             enviarDatos();
+            alert("Consecutivo actualizado.")
         }
     });
 
     cargarConsecutivos();
     cargarDatosConsecutivo();
-    enviarDatos();
 });
 
 function goBack() {
@@ -90,7 +93,7 @@ function enviarDatos() {
 
     // Crear un objeto con los datos a enviar
     var data={
-        "id_consecutivo": `${Math.random()*10000000}`,
+        "id_consecutivo": idConsecutivo,
         "descripcion_consecutivo": descripcion,
         "prefijo_consecutivo": prefijo,
         "rango_Inicial": rangoInicial,
@@ -99,7 +102,7 @@ function enviarDatos() {
     };
 
      fetch(`https://localhost:7151/api/Consecutivoes/${idConsecutivo}`, {
-         method: 'POST',
+         method: 'PUT',
          headers: {
              'Content-Type': 'application/json'
          },
@@ -115,5 +118,5 @@ function enviarDatos() {
          console.error('Error:', error);
      });
 
-    
+
 }

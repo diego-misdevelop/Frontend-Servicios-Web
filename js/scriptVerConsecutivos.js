@@ -1,11 +1,15 @@
 // Agrega un listener al formulario cuando se cargue el DOM
 document.addEventListener("DOMContentLoaded", function() {
     var form = document.querySelector('.form');
-
     form.addEventListener('submit', function(event) {
         var volverButtonValue = "Volver";
+        var nuevoConsecutivo = "Nuevo consecutivo"
         var submitButton = document.activeElement; // Botón presionado
+        if (submitButton && submitButton.value === nuevoConsecutivo) {
+            event.preventDefault(); // Evitar el envío del formulario
 
+            window.location.href = '../html/nuevoConsecutivo.html'; // Redirige a llegadaVuelos.html
+        }
         if (submitButton && submitButton.value === volverButtonValue) {
             event.preventDefault(); // Evitar el envío del formulario
 
@@ -30,7 +34,7 @@ function cargarConsecutivos(){
        return Response.json();
     })
     .then(consecutivos => {
-       mostrarRoles(consecutivos);
+        mostrarConsecutivos(consecutivos);
     })
     .catch(error =>{
     console.error('Error:', error);
@@ -38,42 +42,38 @@ function cargarConsecutivos(){
     
     }
 
+    function mostrarConsecutivos(consecutivos) {
 
-    function mostrarRoles(consecutivos) {
-        var usersContainer = document.querySelector('.users-container');
+        const tableBody = document.getElementById('table-body');
     
-        if (usersContainer) {
-            consecutivos.forEach(rol => {
-                var userCard = document.createElement('div');
-                userCard.classList.add('user-card');
+        consecutivos.forEach(consecutivos => {
+                const row = document.createElement('tr');
     
-                var userId = document.createElement('p');
-                userId.textContent = `Código: ${rol.id_consecutivo}`;
-                userCard.appendChild(userId);
+                const codConsecCell = document.createElement('td');
+                codConsecCell.textContent = consecutivos.id_consecutivo;
     
-                var userDescription = document.createElement('p');
-                userDescription.textContent = `Descripción: ${rol.descripcion_consecutivo}`;
-                userCard.appendChild(userDescription);
-    
-                var userPrefix = document.createElement('p');
-                userPrefix.textContent = `Prefijo: ${rol.prefijo_consecutivo}`;
-                userCard.appendChild(userPrefix);
-    
-                var editButton = document.createElement('button');
+                const nomConsecCell = document.createElement('td');
+                nomConsecCell.textContent = consecutivos.descripcion_consecutivo;
+
+                const prefConsecCell = document.createElement('td');
+                prefConsecCell.textContent = consecutivos.prefijo_consecutivo;
+
+                const editButtonCell = document.createElement('td');
+   
+                const editButton = document.createElement('button');
                 editButton.textContent = 'Editar';
                 editButton.classList.add('edit-button');
                 editButton.addEventListener('click', function() {
-                    editar(rol.id_consecutivo);
+                    editar(consecutivos.id_consecutivo);
                 });
-                userCard.appendChild(editButton);
-    
-                usersContainer.appendChild(userCard);
+                editButtonCell.appendChild(editButton);
+                row.appendChild(codConsecCell);
+                row.appendChild(nomConsecCell);
+                row.appendChild(prefConsecCell);
+                row.appendChild(editButtonCell);
+                tableBody.appendChild(row);
             });
-        } else {
-            console.error('El contenedor de usuarios no se encontró en el DOM.');
-        }
     }
-    
 
 function editar(id) {
     // Aquí puedes redirigir a la página de edición con el ID del rol

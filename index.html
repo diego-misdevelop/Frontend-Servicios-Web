@@ -9,53 +9,25 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <meta name="google-signin-client_id" content="913950629206-8hqo88m1k3i4fdg78l3r4clpsg1e8gjc.apps.googleusercontent.com">
+    <meta name="google-signin-client_id" content="913950629206-m0vju0vsgfcsjq9lt1u2665pkl2gvsjs.apps.googleusercontent.com">
     <title>Formulario de registro e inicio de sesión</title>
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <title>Google Sign-In</title>
-    <script src="https://apis.google.com/js/platform.js?onload=loadAuthClient" async defer></script>
-      
-    
+
   
 
     <!-- Script para validar el CAPTCHA del formulario de inicio de sesión -->
     <script>
-        function loadAuthClient() {
-            gapi.load('auth2', initGoogleAuth);
-          }
 
-        function initGoogleAuth(clientId = '913950629206-8hqo88m1k3i4fdg78l3r4clpsg1e8gjc.apps.googleusercontent.com') {
-        gapi.auth2.init({
-            client_id: clientId,
-            scope: 'https://www.googleapis.com/auth/userinfo.email'
-        }).then(() => {
-            document.getElementById('sign-in-btn').disabled = false;
-        }).catch(err => {
-            console.log(err);
-        });
-        }
-        function signIn() {
-            gapi.auth2.getAuthInstance().signIn().then(() => {
-              document.getElementById('sign-in-btn').hidden = true;
-              document.getElementById('sign-out-btn').hidden = false;
-              // Puedes habilitar otros botones o funciones después de iniciar sesión
-            }).catch(err => {
-              console.log(err);
-            });
-          }
-      
-          function signOut() {
-            gapi.auth2.getAuthInstance().signOut().then(() => {
-              document.getElementById('sign-in-btn').hidden = false;
-              document.getElementById('sign-out-btn').hidden = true;
-              // Puedes deshabilitar o cambiar otros elementos después de cerrar sesión
-            }).catch(err => {
-              console.log(err);
-            });
-          }
-      
 
+          function onSignIn(googleUser) {
+            var profile = googleUser.getBasicProfile();
+            console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+            console.log('Name: ' + profile.getName());
+            console.log('Image URL: ' + profile.getImageUrl());
+            console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+          }
         function validateLoginForm() {
             var response = grecaptcha.getResponse();
             if(response.length == 0) {

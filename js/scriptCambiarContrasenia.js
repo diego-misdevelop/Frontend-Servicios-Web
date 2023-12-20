@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function() {
         var volverButtonValue = "Volver";
         var submitButton = document.activeElement; // Botón presionado
 
-                // Obtener los valores de los campos del formulario
+        // Obtener los valores de los campos del formulario
         var contrasenia = document.querySelector('#contrasenia').value;
         var nueva_contra = document.querySelector('#nueva_contra').value;
         var conf_contrasenia = document.querySelector('#conf_contrasenia').value;
@@ -16,17 +16,18 @@ document.addEventListener("DOMContentLoaded", function() {
             "correo_usuario": email,
             "contra_usuario": contrasenia
         };
-
-
+        
         if (submitButton && submitButton.value === volverButtonValue) {
             event.preventDefault(); // Evitar el envío del formulario
-
+            alert('Bton "Volver" presionado');
             goBack(); // Llama a la función goBack() para volver
         }
     });
+
     function goBack() {
         window.location.href = '../html/paginaPrincipal.html';
    }
+
     // Manejar clic en "Cambiar contraseña"
     changePasswordBtn.addEventListener('click', function(event) {
         event.preventDefault(); // Evitar el envío del formulario
@@ -37,14 +38,12 @@ document.addEventListener("DOMContentLoaded", function() {
         // Aquí deberías enviar una solicitud al servidor para cambiar la contraseña del usuario seleccionado
         cambiarContrasenaRolSeguridad(selectedUserId, newPassword);
     });
+
 });
 
 function cambiarContrasenaRolSeguridad(userId, newPassword) {
-    // Enviar una solicitud al servidor para cambiar la contraseña del usuario con el ID userId al nuevo newPassword
-    // Puedes usar fetch o alguna librería para manejar peticiones HTTP
-    // Ejemplo:
     fetch(`https://localhost:7151/api/Usuarios?id=${userId}`, {
-        method: 'POST',
+        method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
         },
