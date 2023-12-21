@@ -41,13 +41,17 @@ document.addEventListener("DOMContentLoaded", function() {
 
 });
 
-function cambiarContrasenaRolSeguridad(userId, newPassword) {
+function obtenerUserId(){
+    return localStorage.getItem('userId');
+}
+
+function cambiarContrasenaRolSeguridad(userId, contrasenia,newPassword) {
     fetch(`https://localhost:7151/api/Usuarios?id=${userId}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ newPassword })
+        body: JSON.stringify({contrasenia, newPassword })
     })
     .then(response => {
         if (!response.ok) {

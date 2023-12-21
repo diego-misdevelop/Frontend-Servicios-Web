@@ -190,6 +190,29 @@ html{
     border-top-right-radius: 0px;
 
 }
-
 }
     
+.input-wrapper {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+ 
+.field-title {
+    margin-right: 10px;
+    width: 120px;
+    display: inline-block;
+}
+
+  /* Estilos para las celdas del botón de editar */
+  .botones button {
+    background-color: #9191bd;
+    color: #fff;
+    border-radius: 20px;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-top: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0, .1);
+}
+

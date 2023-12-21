@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulario de registro e inicio de sesión</title>
+    <title>Actualizar roles y usuarios</title>
     <link rel="stylesheet" href="../css/verUsuarios.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,16 +12,15 @@
 </head>
 <body>
     <div class="container-form register">
-        <div class="form-information">
-            <h2>Lista de roles</h2>
-            <form class="form">
-                <input type="submit" value="Actualizar roles">
-                <input type="submit" value="Volver">
-            </form>
+        <div class="form-information users-list">
+            <h2>Lista de usuarios</h2>
         </div>
-        <div class="users-container">
-            <h2>Usuarios de la base de datos</h2>
-            <!-- Aquí se mostrarían los usuarios -->
+        <div class="form-information roles-lista">
+            <h2>Lista de roles</h2>
+            <div class="botones">
+                <button onclick="actualizarRol()" class="button">Actualizar roles</button>
+                <button onclick="goBack()" class="button">Volver</button>
+            </div>
         </div>
     </div>
 

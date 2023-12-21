@@ -32,39 +32,50 @@ loginButton.addEventListener('click', function(event) {
 
     var correo = document.getElementById('correo').value;
     var contraseña = document.getElementById('contraseña').value;
+    const usuarioValido={correo: 'luis@gmail.com', contraseña: 'b22'}
+    var response= grecaptcha.getResponse();
+    if (response.length === 0){
+        alert("Por favor validar que no eres un robot.");
+        return;
+    }
 
+    if(correo===usuarioValido.correo && contraseña===usuarioValido.contraseña){
+        window.location.href = '../html/paginaPrincipal.html';
+    }else{
+        alert('Credenciales inválidas');
+    }
 
     // Obtener el token de Google almacenado en el LocalStorage
-      // var googleToken = localStorage.getItem('googleToken');
+       //var googleToken = localStorage.getItem('googleToken');
 
  
         // Verificar si existe el token de Google
          // if (googleToken) {
 
             // Redireccionar a la página principal
-            window.location.href = '../html/paginaPrincipal.html';
+           // window.location.href = '../html/paginaPrincipal.html';
          // } else {
             // Si no se ha iniciado sesión con Google, realizar la lógica de autenticación normal
-             // fetch('https://localhost:7151/api/Usuarios', {
-             //     method: 'POST',
+             //fetch('https://localhost:7151/api/Usuarios', {
+               //   method: 'POST',
                //   headers: {
-               //       "Content-Type": "application/json",
-               //   },
-               //   body: JSON.stringify({ correo, contraseña })
-            //  })
+                //      "Content-Type": "application/json",
+                //  },
+                //  body: JSON.stringify({ correo, contraseña })
+              //})
             //  .then(response => {
-                //  if (response.ok) {
-                    //  window.location.href = '../html/paginaPrincipal.html';
-                 // } else {
-                    //  alert('Credenciales inválidas');
+               //   if (response.ok) {
+                //  window.location.href = '../html/paginaPrincipal.html';
+                //  } else {
+                //      alert('Credenciales inválidas');
                 //  }
-           //   })
-           //  .catch(error => {
-                 // console.error('Error:', error);
-            //  });
+             // })
+             //.catch(error => {
+             //     console.error('Error:', error);
+             // });
          // }
-    });
+   // });
 
 });
 
-
+});

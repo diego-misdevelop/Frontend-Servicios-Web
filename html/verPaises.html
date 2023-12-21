@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de países</title>
-    <link rel="stylesheet" href="../css/styleVerConsecutivos.css">
+    <link rel="stylesheet" href="../css/styleVerPaises.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
@@ -19,15 +19,18 @@
                     <tr>
                         <th>ID país</th>
                         <th>Nombre país</th>
-                        <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody id="table-body">
                 </tbody>
             </table>
-            <form class="form">
-                <input type="submit" value="Volver">
-            </form>
+            <div class="form">
+   
+            </div>
+            <div class="botones">
+                <button onclick="agregarPais()" class="button">Agregar país</button>
+                <button onclick="goBack()" class="button">Volver</button>
+            </div>
         </div>
     </div>
  
